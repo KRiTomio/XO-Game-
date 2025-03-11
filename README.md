@@ -1,16 +1,23 @@
-# xo_game
+# XO Game with Flutter
+เกม XO ที่สามารถปรับขนาดตารางได้และบันทึกประวัติการเล่นในแต่ละเกม โดยใช้ Flutter และการจัดการสถานะด้วย Provider เพื่อง่ายต่อการพัฒนาและจัดการสถานะของเกม
 
-A new Flutter project.
+วิธีการรันโปรแกรม
+รันแอปบน Emulator หรือ Device ให้เปิด terminal หรือ command prompt แล้วเข้าไปในโฟลเดอร์โปรเจกต์ที่คุณดาวน์โหลดมา จากนั้นรันคำสั่ง: flutter run
 
-## Getting Started
+ออกแบบโปรแกรม
+1. โครงสร้างของโปรเจกต์
+โปรเจกต์มีไฟล์หลักดังนี้:
+main.dart: ไฟล์เริ่มต้นของแอปพลิเคชัน ใช้สำหรับการตั้งค่า Provider และแสดงหน้าหลักของเกม
+game_provider.dart: ตัวจัดการสถานะของเกม ใช้สำหรับการจัดการกระดานเกม, ผู้เล่น, และการตรวจสอบผู้ชนะ
+game_screen.dart: UI หลักของเกม ซึ่งแสดงหน้าจอเกม รวมถึงการแสดงประวัติการเล่น
+board_tile.dart: ช่องของตารางเกม (XO) ซึ่งเป็นส่วนที่ผู้เล่นสามารถกดเพื่อเลือกการเคลื่อนไหว
 
-This project is a starting point for a Flutter application.
+2. การใช้ Provider
+ใช้ Provider ในการจัดการสถานะเกม ซึ่งทำให้เราสามารถแบ่งแยก logic การเล่นและการแสดง UI ออกจากกันได้อย่างมีประสิทธิภาพ
+GameProvider จะทำหน้าที่เก็บสถานะต่างๆ ของเกม รวมถึงกระดาน, ผู้เล่น, และประวัติการเล่น
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. UI การออกแบบ
+หน้าจอหลักมีปุ่มให้ผู้ใช้เลือกขนาดกระดาน (3x3, 4x4, 5x5, 6x6)
+กระดานเกมถูกสร้างโดยใช้ GridView.builder โดยที่แต่ละช่องสามารถคลิกได้เพื่อทำการเลือกตำแหน่ง
+หน้าจอแสดงผลสถานะเกม เช่น ผู้เล่นปัจจุบันหรือผู้ชนะ
+ประวัติการเล่นจะถูกเก็บและแสดงในลิสต์ด้านล่างของหน้าจอ
